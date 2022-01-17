@@ -16,9 +16,8 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
     const [modalVisible, setModalVisible] = useState<boolean>(false)
     const {user} = useTypedSelector(state => state.auth)
     const {loadBanksFromDB} = useActions()
-    const [form] = Form.useForm();
+    const [form] = Form.useForm()
     let numPattern = /^\d+$/
-    let emptyPattern = /^\s*$/
 
     //EditBank
     const [editedBank, setEditedBank] = useState<IBank>({

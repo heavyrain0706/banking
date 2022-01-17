@@ -1,13 +1,11 @@
 import { Button, Card, Form, Input, Layout, Row } from "antd";
 import { FC, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import classes from './Login.module.scss'
 
 
 const Login: FC = () => { 
-    const dispatch = useDispatch()
     const {error} = useTypedSelector(state => state.auth)
 
     const [username, setUsername] = useState('')
