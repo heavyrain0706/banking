@@ -1,7 +1,6 @@
 import { Button, Form, Input } from "antd";
 import Modal from "antd/lib/modal/Modal";
 import  React, { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { IBank } from "../../store/types/IBank";
@@ -14,12 +13,12 @@ interface BankProps {
  
 const Bank: FC<BankProps> = ({bank, creditTerm}) => {
 
-    const navigate = useNavigate()
     const [modalVisible, setModalVisible] = useState<boolean>(false)
     const {user} = useTypedSelector(state => state.auth)
     const {loadBanksFromDB} = useActions()
     const [form] = Form.useForm();
     let numPattern = /^\d+$/
+    let emptyPattern = /^\s*$/
 
     //EditBank
     const [editedBank, setEditedBank] = useState<IBank>({
@@ -36,9 +35,8 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
       };
   
     const editBank = () => {
-        debugger
         let banksFromStorage: IBank[] = JSON.parse(localStorage.getItem(`${user.username}Banks`) || '{}')
-        let storageAfterEdit = banksFromStorage.filter(bankFromStorage => bankFromStorage.id != editedBank.id)
+        let storageAfterEdit = banksFromStorage.filter(bankFromStorage => bankFromStorage.id !== editedBank.id)
         storageAfterEdit.push(editedBank)
         localStorage.setItem(`${user.username}Banks`, JSON.stringify(storageAfterEdit))
         loadBanksFromDB(storageAfterEdit)
@@ -49,7 +47,7 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
     //Delete bank
     const deleteBank = (e:React.MouseEvent<HTMLButtonElement>) => {
         let banksFromStorage: IBank[] = JSON.parse(localStorage.getItem(`${user.username}Banks`) || '{}')
-        let storageAfterDelete = banksFromStorage.filter(bankFromStorage => bankFromStorage.id != bank.id)
+        let storageAfterDelete = banksFromStorage.filter(bankFromStorage => bankFromStorage.id !== bank.id)
         localStorage.setItem(`${user.username}Banks`, JSON.stringify(storageAfterDelete))
         loadBanksFromDB(storageAfterDelete)
     }
@@ -81,7 +79,7 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                     <Form.Item
                         label="Банк"
                         name="name"
-                        rules={[{ required: false, message: 'Введите название банка' }]}
+                        rules={[{ required: true, message: 'Введите название банка' }]}
                     >
                         <Input name="name" onChange={handleEditedMultipleInputChange}
                             value={editedBank.name}
@@ -90,7 +88,7 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                     <Form.Item
                         label="Процентная ставка"
                         name="interestRate"
-                        rules={[{ required: false, message: 'Введите процентную ставку' },
+                        rules={[{ required: true, message: 'Введите процентную ставку' },
                         () => ({
                             validator(_,value) {
                                 if(numPattern.test(value)) {
@@ -99,7 +97,8 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                                     return Promise.reject('Вводите только цифры')
                                 }
                             }
-                        })]}
+                        })
+                    ]}
                     >
                         <Input name="interestRate" onChange={handleEditedMultipleInputChange}
                             value={editedBank.interestRate}
@@ -108,7 +107,7 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                     <Form.Item
                         label="Максимальный кредит"
                         name="maxCredit"
-                        rules={[{ required: false, message: 'введите сумму кредита' },
+                        rules={[{ required: true, message: 'введите сумму кредита' },
                         () => ({
                             validator(_,value) {
                                 if(numPattern.test(value)) {
@@ -126,7 +125,7 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                     <Form.Item
                         label="Минимальный первоначальный взнос"
                         name="MinContribution"
-                        rules={[{ required: false, message: 'введите сумму первого взноса' },
+                        rules={[{ required: true, message: 'введите сумму первого взноса' },
                         () => ({
                             validator(_,value) {
                                 if(numPattern.test(value)) {

@@ -19,12 +19,13 @@ const Banks: FC = () => {
 
     useEffect( () => {
         loadBanksFromDB([] as IBank[])
-        let banksFromStorage = JSON.parse( user.username && localStorage.getItem( `${user.username}Banks`) || '{}')
+        let banksFromStorage = JSON.parse(localStorage.getItem( `${user.username}Banks`) || '{}')
         if (Array.isArray(banksFromStorage) && banksFromStorage.length > 0) {
             loadBanksFromDB(banksFromStorage)
         } else {
             setDatabaseStatus('На данный момент у Вас нет банков')
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return ( 
