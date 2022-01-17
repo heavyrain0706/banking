@@ -1,0 +1,63 @@
+.bank {
+    padding: 20px 30px;
+    border-radius: 10px;
+    background-color: #EBECF0;
+    flex: 0 1 48%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 30px 0;
+}
+
+.bank__name {
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    padding: 0 0 5px 0;
+    color: #142B4D;
+    border-bottom: 2px solid #142B4D;
+}
+
+.bank__item {
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bank__interestRate, .bank__maxCredit, .bank__minContribution {
+    font-size: 16px;
+    font-weight: 700;
+    color: #142B4D;
+}
+
+.bank__creditTerm {
+    font-size: 16px;
+    font-weight: 700;
+    color: #142B4D;
+}
+
+.bank__options {
+    display: flex;
+    flex-direction: column;
+}
+
+.bank__optionsBtn {
+    border: none;
+    cursor: pointer;
+    background-color: #1890FF;
+    padding: 10px 20px;
+    margin: 0 0 10px 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+        &:hover {
+            background-color: #D93B59;
+        }
+        &:nth-last-child(1) {
+            margin: 0;
+        }
+}
