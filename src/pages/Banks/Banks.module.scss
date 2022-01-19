@@ -1,14 +1,14 @@
 .banks {
     padding: 60px 0;
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .banks__inner {
     padding: 40px 20px;
-    margin: 0 20px 0 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -42,4 +42,13 @@
         &:hover {
                 background-color: #D93B59;
         }
+}
+
+@media (max-width: 480px){
+    .banks {
+        padding: 20px 0;
+    }
+    .banks__inner {
+        padding: 10px;
+    }
 }
