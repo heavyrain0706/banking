@@ -23,7 +23,7 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
     const [editedBank, setEditedBank] = useState<IBank>({
         ...bank
     })
-
+    
     //onChangeMultipleHandler
     const handleEditedMultipleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -81,7 +81,7 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                         rules={[{ required: true, message: 'Введите название банка' }]}
                     >
                         <Input name="name" onChange={handleEditedMultipleInputChange}
-                            value={editedBank.name}
+                            value={editedBank.name} defaultValue={editedBank.name}
                         />
                     </Form.Item>
                     <Form.Item
@@ -100,7 +100,7 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                     ]}
                     >
                         <Input name="interestRate" onChange={handleEditedMultipleInputChange}
-                            value={editedBank.interestRate}
+                            value={editedBank.interestRate} defaultValue={editedBank.interestRate}
                         />
                     </Form.Item>
                     <Form.Item
@@ -118,12 +118,12 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                         })]}
                     >
                         <Input name="maxCredit" onChange={handleEditedMultipleInputChange}
-                            value={editedBank.maxCredit}
+                            value={editedBank.maxCredit} defaultValue={editedBank.maxCredit}
                         />
                     </Form.Item>
                     <Form.Item
                         label="Минимальный первоначальный взнос"
-                        name="MinContribution"
+                        name="minContribution"
                         rules={[{ required: true, message: 'введите сумму первого взноса' },
                         () => ({
                             validator(_,value) {
@@ -135,8 +135,8 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                             }
                         })]}
                     >
-                        <Input name="MinContribution" onChange={handleEditedMultipleInputChange}
-                            value={editedBank.minContribution}
+                        <Input name="minContribution" onChange={handleEditedMultipleInputChange}
+                            value={editedBank.minContribution} defaultValue={editedBank.minContribution}
                         />
                     </Form.Item>
                     <Form.Item>
@@ -147,7 +147,7 @@ const Bank: FC<BankProps> = ({bank, creditTerm}) => {
                 </Form>
             </Modal>
         </div>
-    ) 
+    )
 } 
  
 export default Bank;
