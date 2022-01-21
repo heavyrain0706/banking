@@ -1,5 +1,5 @@
 import { AddBanksHistory } from '../types/banks';
-import { IBank } from '../types/IBank';
+import { IBank } from '../models/IBank';
 import { BanksActionTypes, SetDatabaseStatus, LoadBanksFromDB, AddBanks, LoadBanksHistoryFromDB } from '../types/banks';
 
 export const BanksActionCreators = {

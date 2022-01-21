@@ -1,5 +1,5 @@
-import { IUser } from '../store/types/IUser';
 import axios, { AxiosResponse } from 'axios';
+import { IUser } from '../store/models/IUser';
 
 
 export default class UserService {

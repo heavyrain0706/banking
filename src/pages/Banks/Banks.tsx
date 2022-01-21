@@ -6,7 +6,7 @@ import BankForm from "../../components/BankForm";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { RouteNames } from "../../router/routes";
-import { IBank } from "../../store/types/IBank";
+import { IBank } from "../../store/models/IBank";
 import classes from './Banks.module.scss'
 
 const Banks: FC = () => { 
@@ -51,7 +51,7 @@ const Banks: FC = () => {
                    visible={modalVisible}
                    footer={null}
                    onCancel={() => setModalVisible(false)}>
-                   <BankForm />
+                   <BankForm setModalVisible={setModalVisible}/>
             </Modal>
        </section>
     ) 

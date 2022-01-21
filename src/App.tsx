@@ -3,8 +3,9 @@ import Header from "./components/Header/Header";
 import './App.scss';
 import AppRouter from "./components/AppRouter";
 import { useActions } from "./hooks/useActions";
-import { IUser } from "./store/types/IUser";
- 
+import { IUser } from "./store/models/IUser";
+
+
 const App: FC = () => { 
 
     const {setUser, setIsAuth} = useActions()

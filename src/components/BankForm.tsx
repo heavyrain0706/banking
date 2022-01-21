@@ -2,9 +2,15 @@ import { Button, Form, Input } from "antd";
 import { FC, useState } from "react"; 
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { IBank } from "../store/types/IBank";
+import { IBank } from "../store/models/IBank";
+import { Dispatch, SetStateAction } from "react";
+
+
+interface BankFormProps {
+    setModalVisible: Dispatch<SetStateAction<boolean>>
+}
  
-const BankForm: FC = () => { 
+const BankForm: FC<BankFormProps> = ({setModalVisible}) => { 
 
     const {addBank} = useActions()
     const {user} = useTypedSelector(state => state.auth)
@@ -45,8 +51,10 @@ const BankForm: FC = () => {
         addBank(newBank)
         //Push bank to storage
         localStorage.setItem(`${user.username}Banks`, JSON.stringify(banksFromStorage))
-        
+
         form.resetFields();
+
+        setModalVisible(false)
     }
 
     return ( 

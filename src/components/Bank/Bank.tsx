@@ -3,12 +3,12 @@ import Modal from "antd/lib/modal/Modal";
 import  React, { FC, useState } from "react";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { IBank } from "../../store/types/IBank";
+import { IBank } from "../../store/models/IBank";
 import classes from './Bank.module.scss'
 
 interface BankProps {
-    bank: IBank
-    creditTerm: number;
+    bank: IBank,
+    creditTerm: number
 }
  
 const Bank: FC<BankProps> = ({bank, creditTerm}) => {

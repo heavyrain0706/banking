@@ -1,7 +1,7 @@
 import { SetUserAction, SetAuthAction, SetErrorAction, AuthActions } from '../types/auth';
 import { AppDispatch } from '../index';
-import { IUser } from '../types/IUser';
 import UserService from '../../API/UserService';
+import { IUser } from '../models/IUser';
 
 export const AuthActionCreators = {
     setUser: (user: IUser): SetUserAction => ({type: AuthActions.SET_USER, payload: user}),

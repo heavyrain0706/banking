@@ -1,6 +1,5 @@
+import { IUser } from '../models/IUser';
 import { AuthState, AuthAction, AuthActions } from '../types/auth';
-import { IUser } from '../types/IUser';
-
 
 const initialState: AuthState = {
     isAuth: false,

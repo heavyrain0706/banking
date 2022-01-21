@@ -1,4 +1,4 @@
-import { IBank } from './IBank';
+import { IBank } from '../models/IBank';
 
 export interface BanksState {
     banks: IBank[];

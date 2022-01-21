@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { IBank } from "../../store/types/IBank";
+import { IBank } from "../../store/models/IBank";
 import { getDate } from "../../utils/date";
 import classes from './Calculator.module.scss'
  
